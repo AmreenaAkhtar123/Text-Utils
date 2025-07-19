@@ -63,36 +63,42 @@ export default function TextForm(props) {
   const [redoStack, setRedoStack] = useState([]); // for redo
   return (
     <>
-    <div className='container'> 
-      <h1>{props.heading}</h1>
-      <div className="mb-3">
-        
-        <textarea className="form-control " id="myBox" value={text} rows="8" onChange={handleOnChange}></textarea>
+    <div className="container">
+  <h1>{props.heading}</h1>
+  <div className="mb-3">
 
-        <button className="btn btn-primary mx-3 my-3" onClick={handleUpClick}>Convert to UPPER CASE</button>
+    <textarea
+      className="form-control"
+      id="myBox"
+      value={text}
+      rows="8"
+      onChange={handleOnChange}
+    ></textarea>
 
-        <button className="btn btn-primary mx-3 my-3" onClick={handleLoClick}>Lower Case</button>
-
-        <button className="btn btn-primary mx-3 my-3" onClick={handleTitleCase}>Title Case</button>
-
-        <button className="btn btn-primary mx-3 my-3" onClick={handleclearClick}>Clear Text</button>
-
-        <button className="btn btn-primary mx-3 my-3" onClick={handleUndo}>Undo</button>
-
-        <button className="btn btn-primary mx-3 my-3" onClick={handleRedo}>Redo</button>
-
-      </div>
+    {/* Group all buttons in a div */}
+    <div className="textform-buttons d-flex flex-wrap mt-3">
+      <button className="btn btn-primary mx-2" onClick={handleUpClick}>UPPER CASE</button>
+      <button className="btn btn-primary mx-2" onClick={handleLoClick}>lower case</button>
+      <button className="btn btn-primary mx-2" onClick={handleTitleCase}>Title Case</button>
+      <button className="btn btn-secondary mx-2" onClick={handleclearClick}>Clear</button>
+      <button className="btn btn-warning mx-2" onClick={handleUndo}>Undo</button>
+      <button className="btn btn-success mx-2" onClick={handleRedo}>Redo</button>
     </div>
 
-    <div className="container my-4">
-      <h1>Text Summary:</h1>
-      <p>{text.split(" ").length} words and {text.length} characters</p>
-      <p>{0.008 * text.split(" ").length} Minutes Read</p>
+  </div>
+</div>
+
+<div className="container text-summary">
+  <h1>Text Summary:</h1>
+  <p>{text.split(" ").filter(word => word !== "").length} words and {text.length} characters</p>
+  <p>{(0.008 * text.split(" ").filter(word => word !== "").length).toFixed(2)} Minutes Read</p>
 
 
-      <h2>Preview</h2>
-      <p>{text.length > 0 ? text : "Enter something in the textbox above to preview it here."}</p>
-    </div>
+
+  <h2>Preview</h2>
+  <p>{text.length > 0 ? text : "Enter something in the textbox above to preview it here."}</p>
+</div>
+
     </>
   )
 }

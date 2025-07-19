@@ -1,38 +1,78 @@
-.App {
-  text-align: center;
+/* Body & Global Styles */
+body {
+  background-color: #F2F2F2;
+  color: #000000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Container Styling */
+.container {
+  background-color: #F2F2F2;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  margin-top: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Headings */
+h1, h2 {
+  color: #000000;
+  margin-bottom: 20px;
+  font-weight: 600;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Text Area */
+textarea#myBox {
+  background-color: #FFFFFF;
+  color: #000000;
+  border: 2px solid #B6B09F;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  resize: none;
+  transition: border-color 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+textarea#myBox:focus {
+  border-color: #2A4759;
+  outline: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Buttons */
+button.btn {
+  background-color: #2A4759;
+  border: none;
+  color: #FFFFFF;
+  font-weight: bold;
+  border-radius: 30px;
+  padding: 0.5rem 1.5rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.btn:hover {
+  background-color: #1e3441;
+  transform: scale(1.05);
+}
+
+button.btn:active {
+  transform: scale(0.97);
+}
+
+/* Input Fields */
+input.form-control {
+  background-color: #FFFFFF;
+  color: #000000;
+  border: 1px solid #B6B09F;
+}
+
+input.form-control::placeholder {
+  color: #555;
+}
+
+/* Paragraphs */
+p {
+  color: #222;
+  font-size: 1.1rem;
 }
