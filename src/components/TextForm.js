@@ -3,30 +3,64 @@ import React, {useState} from 'react'
 export default function TextForm(props) {
   
   const handleUpClick = () => {
+    setHistory([...history, text]);
+    setRedoStack([]);
     let newText = text.toUpperCase();
     setText(newText);
-    //console.log("Uppercase was clicked" + text);
   }
+
 
   const handleLoClick = () => {
+    setHistory([...history, text]);
+    setRedoStack([]);
     let newText = text.toLowerCase();
     setText(newText);
-    //console.log("Lowercase was clicked" + text);
   }
 
+
   const handleclearClick = () => {
-    let newText = "";
-    setText(newText);
+    setHistory([...history, text]);
+    setRedoStack([]);
+    setText("");
   }
+
+
+  const handleUndo = () => {
+    if (history.length === 0) 
+      return;
+    const lastText = history[history.length - 1];
+    setRedoStack([text, ...redoStack]); // push current text into redo
+    setText(lastText);
+    setHistory(history.slice(0, history.length - 1));
+  };
+
+  const handleRedo = () => {
+    if (redoStack.length === 0) 
+      return;
+    const nextText = redoStack[0];
+    setHistory([...history, text]); // push current text into history
+    setText(nextText);
+    setRedoStack(redoStack.slice(1));
+  };
 
 
 
   const handleOnChange = (event) => {
-    //console.log("On change");
+    setHistory([...history, text]);         // Save current state before updating
+    setRedoStack([]);                       // Clear redo stack on new input
     setText(event.target.value);
-  } 
-  
+  }
+
+  const handleTitleCase = () => {
+    setHistory([...history, text]);
+    setRedoStack([]);
+    let newText = text.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+    setText(newText);
+  }
+
   const [text, setText] = useState("");
+  const [history, setHistory] = useState([]); // for undo
+  const [redoStack, setRedoStack] = useState([]); // for redo
   return (
     <>
     <div className='container'> 
@@ -39,7 +73,13 @@ export default function TextForm(props) {
 
         <button className="btn btn-primary mx-3 my-3" onClick={handleLoClick}>Lower Case</button>
 
+        <button className="btn btn-primary mx-3 my-3" onClick={handleTitleCase}>Title Case</button>
+
         <button className="btn btn-primary mx-3 my-3" onClick={handleclearClick}>Clear Text</button>
+
+        <button className="btn btn-primary mx-3 my-3" onClick={handleUndo}>Undo</button>
+
+        <button className="btn btn-primary mx-3 my-3" onClick={handleRedo}>Redo</button>
 
       </div>
     </div>
