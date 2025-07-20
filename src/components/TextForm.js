@@ -92,14 +92,14 @@ export default function TextForm(props) {
 
     {/* Group all buttons in a div */}
     <div className="textform-buttons d-flex flex-wrap mt-3">
-      <button className="btn btn-primary mx-2" onClick={handleUpClick}>UPPER CASE</button>
-      <button className="btn btn-primary mx-2" onClick={handleLoClick}>lower case</button>
-      <button className="btn btn-primary mx-2" onClick={handleTitleCase}>Title Case</button>
-      <button className="btn btn-secondary mx-2" onClick={handleclearClick}>Clear</button>
-      <button className="btn btn-warning mx-2" onClick={handleUndo}>Undo</button>
-      <button className="btn btn-success mx-2" onClick={handleRedo}>Redo</button>
-      <button className="btn btn-warning mx-2" onClick={handleCopy}>Copy Text</button>
-      <button className="btn btn-warning mx-2" onClick={removeSpace}>Remove Extra Spaces</button>
+      <button className="btn btn-primary mx-2 my-2" onClick={handleUpClick}>UPPER CASE</button>
+      <button className="btn btn-primary mx-2 my-2" onClick={handleLoClick}>lower case</button>
+      <button className="btn btn-primary mx-2 my-2" onClick={handleTitleCase}>Title Case</button>
+      <button className="btn btn-secondary mx-2 my-2" onClick={handleclearClick}>Clear</button>
+      <button className="btn btn-warning mx-2 my-2" onClick={handleUndo}>Undo</button>
+      <button className="btn btn-success mx-2 my-2" onClick={handleRedo}>Redo</button>
+      <button className="btn btn-warning mx-2 my-2" onClick={handleCopy}>Copy Text</button>
+      <button className="btn btn-warning mx-2 my-2" onClick={removeSpace}>Remove Extra Spaces</button>
       
     </div>
 
