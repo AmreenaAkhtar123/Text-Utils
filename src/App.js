@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
+import About from './components/About';
 
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
     <>
     <Navbar title="TextUtils" aboutText="About TextUtils"/>
     <div className="container my-3">
-      <TextForm heading="Enter your text to analyze" />
+      <TextForm heading="Enter your text to analyze" /> 
+      <About/>
     </div>
     </>
   );
