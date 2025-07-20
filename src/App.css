@@ -21,7 +21,7 @@
 
 /* Optional: Make the switch label readable in dark */
 .form-check-label {
-  color: #ffffff !important;
+  color: #9c8d8d !important;
 }
 .dark-mode .accordion-item {
   background-color: #1e1e1e;
