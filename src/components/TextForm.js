@@ -57,6 +57,16 @@ export default function TextForm(props) {
     let newText = text.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
     setText(newText);
   }
+    const handleCopy = () => {
+    navigator.clipboard.writeText(text);
+    alert('Text copied to clipboard!');
+  };
+
+  const removeSpace = () => {
+    const newText = text.replace(/\s+/g, ' ').trim();
+    setText(newText);
+    
+  };
 
   const [text, setText] = useState("");
   const [history, setHistory] = useState([]); // for undo
@@ -83,6 +93,9 @@ export default function TextForm(props) {
       <button className="btn btn-secondary mx-2" onClick={handleclearClick}>Clear</button>
       <button className="btn btn-warning mx-2" onClick={handleUndo}>Undo</button>
       <button className="btn btn-success mx-2" onClick={handleRedo}>Redo</button>
+      <button className="btn btn-warning mx-2" onClick={handleCopy}>Copy Text</button>
+      <button className="btn btn-warning mx-2" onClick={removeSpace}>Remove Extra Spaces</button>
+      
     </div>
 
   </div>
