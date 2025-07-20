@@ -73,17 +73,22 @@ export default function TextForm(props) {
   const [redoStack, setRedoStack] = useState([]); // for redo
   return (
     <>
-    <div className="container">
+    <div className={`container ${props.darkMode ? 'dark-mode' : ''}`}>
   <h1>{props.heading}</h1>
   <div className="mb-3">
-
     <textarea
-      className="form-control"
+      className={`form-control ${props.darkMode ? 'dark-textarea' : ''}`}
       id="myBox"
       value={text}
       rows="8"
       onChange={handleOnChange}
+      style={{
+        backgroundColor: props.darkMode ? '#2c2c2c' : '#ffffff',
+        color: props.darkMode ? '#ffffff' : '#000000',
+        borderColor: props.darkMode ? '#555' : '#B6B09F'
+      }}
     ></textarea>
+
 
     {/* Group all buttons in a div */}
     <div className="textform-buttons d-flex flex-wrap mt-3">
@@ -112,7 +117,10 @@ export default function TextForm(props) {
   <p>{text.length > 0 ? text : "Enter something in the textbox above to preview it here."}</p>
 </div>
 
+
     </>
   )
+  
 }
+
 
