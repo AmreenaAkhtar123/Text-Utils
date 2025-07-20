@@ -7,45 +7,44 @@ import React, { useState } from 'react';
 import About from './components/About';
 import { Alert } from './components/Alert.js';
 
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+
 function App() {
   const [darkMode, setDarkMode] = useState(false);
-
   const [alert, setAlert] = useState(null);
 
-  const showAlert = (message, type) =>{
-    setAlert({
-      msg : message,
-      type : type
-    })
-    setTimeout(()=>{
-      setAlert(null);
-    },1500);
+  const showAlert = (message, type) => {
+    setAlert({ msg: message, type: type });
+    setTimeout(() => setAlert(null), 1500);
+  };
 
-  }
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
     document.body.style.backgroundColor = darkMode ? '#F2F2F2' : '#121212';
-    showAlert("Light mode has been enabled", "Success");
     document.body.style.color = darkMode ? '#000000' : '#ffffff';
-    showAlert("Dark mode has been enabled", "Success");
+    showAlert(darkMode ? "Light mode has been enabled" : "Dark mode has been enabled", "Success");
   };
 
   return (
-    <>
+    <Router>
       <Navbar
         title="TextUtils"
         aboutText="About TextUtils"
         darkMode={darkMode}
         toggleDarkMode={toggleDarkMode}
       />
-      <Alert  alert = {alert}/>
+      <Alert alert={alert} />
       <div className={`container my-3 ${darkMode ? 'dark-mode' : ''}`}>
-        <TextForm heading="Enter your text to analyze" darkMode={darkMode} />
-
-        <About darkMode={darkMode}/>
+        <Routes>
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/" element={<TextForm heading="Enter your text to analyze" darkMode={darkMode} />} />
+        </Routes>
       </div>
-
-    </>
+    </Router>
   );
 }
 
